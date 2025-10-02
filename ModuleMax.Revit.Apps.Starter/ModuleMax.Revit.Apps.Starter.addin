@@ -1,0 +1,15 @@
+﻿<RevitAddIns>
+    <AddIn Type="Application">
+        <Name>ModuleMax.Revit.Apps.Starter</Name>
+        <Assembly>ModuleMax.Revit.Apps.Starter\ModuleMax.Revit.Apps.Starter.dll</Assembly>
+        <AddInId>4F842CFC-D5F3-429A-824C-67323B2EA9D9</AddInId>
+        <FullClassName>ModuleMax.Revit.Apps.Starter.Application</FullClassName>
+        <VendorId>Development</VendorId>
+        <VendorDescription></VendorDescription>
+        <VendorEmail></VendorEmail>
+    </AddIn>
+    <ManifestSettings>
+        <UseRevitContext>False</UseRevitContext>
+        <ContextName>ModuleMax.Revit.Apps.Starter</ContextName>
+    </ManifestSettings>
+</RevitAddIns>
