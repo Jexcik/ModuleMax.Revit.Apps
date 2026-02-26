@@ -12,6 +12,8 @@ sealed partial class Build
         {
             foreach (var configuration in GlobBuildConfigurations())
             {
+                AssemblyVersionsMap.TryGetValue(configuration, out var version);
+
                 DotNetBuild(settings => settings
                     .SetProjectFile(Solution)
                     .SetConfiguration(configuration)

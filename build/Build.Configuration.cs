@@ -12,6 +12,20 @@ sealed partial class Build
         "Release*"
     ];
 
+        /// <summary>
+    ///     Mapping configurations and their assembly versions.
+    /// </summary>
+    Dictionary<string, string> AssemblyVersionsMap = new()
+    {
+        { "Release Engine", "1.0.0" },
+        { "Release R21", "2021.1.0" },
+        { "Release R22", "2022.1.0" },
+        { "Release R23", "2023.1.0" },
+        { "Release R24", "2024.1.0" },
+        { "Release R25", "2025.1.0" },
+        { "Release R26", "2026.0.0" }
+    };
+
     /// <summary>
     ///     Mapping between used installer project and the project containing the installation files.
     /// </summary>
