@@ -19,6 +19,7 @@ public static class Host
         _serviceProvider = services.BuildServiceProvider();
     }
 
+
     /// <summary>
     ///     Get service of type <typeparamref name="T"/>
     /// </summary>
