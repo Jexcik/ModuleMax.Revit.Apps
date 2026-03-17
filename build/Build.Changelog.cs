@@ -13,6 +13,11 @@ sealed partial class Build
         Log.Information("Changelog: {Path}", ChangelogPath);
 
         var changelog = BuildChangelog();
+        if (changelog.Length == 0 && IsPrerelease)
+        {
+            changelog.AppendLine($"Automated prerelease build: {ReleaseVersion}");
+        }
+
         Assert.True(changelog.Length > 0, $"No version entry exists in the changelog: {ReleaseVersion}");
 
         return changelog;

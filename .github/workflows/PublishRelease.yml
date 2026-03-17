@@ -31,8 +31,17 @@ jobs:
         shell: bash
         run: |
           set -e
-          git tag ${{ github.event.inputs.version }}
-          git push origin ${{ github.event.inputs.version }}
+          if git rev-parse "${{ github.event.inputs.version }}" >/dev/null 2>&1; then
+            echo "Tag ${{ github.event.inputs.version }} already exists locally. Skipping creation."
+          else
+            git tag "${{ github.event.inputs.version }}"
+          fi
+
+          if git ls-remote --tags origin "refs/tags/${{ github.event.inputs.version }}" | grep -q "${{ github.event.inputs.version }}"; then
+            echo "Tag ${{ github.event.inputs.version }} already exists on origin. Skipping push."
+          else
+            git push origin "${{ github.event.inputs.version }}"
+          fi
 
       - name: Resolve release version
         id: version
