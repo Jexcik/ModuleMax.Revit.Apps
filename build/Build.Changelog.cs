@@ -39,6 +39,18 @@ sealed partial class Build
     /// </summary>
     StringBuilder BuildChangelog()
     {
+        var changelog = TryBuildChangelog(ReleaseVersion);
+        if (changelog.Length == 0 && IsPrerelease)
+        {
+            changelog = TryBuildChangelog(ReleaseVersionNumber);
+        }
+
+        TrimEmptyLines(changelog);
+        return changelog;
+    }
+
+    StringBuilder TryBuildChangelog(string version)
+    {
         const string separator = "# ";
 
         var hasEntry = false;
@@ -53,13 +65,12 @@ sealed partial class Build
                 continue;
             }
 
-            if (line.StartsWith(separator) && line.Contains(ReleaseVersion))
+            if (line.StartsWith(separator) && line.Contains(version))
             {
                 hasEntry = true;
             }
         }
 
-        TrimEmptyLines(changelog);
         return changelog;
     }
 
