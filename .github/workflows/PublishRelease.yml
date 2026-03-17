@@ -39,6 +39,7 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/global.json', '**/*.csproj', '**/Directory.Packages.props') }}
 
       - name: Publish release
+        if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/')
         run: ./.nuke/build.cmd PublishGitHub --ReleaseVersion ${{ github.event.inputs.version || github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

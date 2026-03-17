@@ -15,6 +15,6 @@ sealed partial class Build
         .Executes(() =>
         {
             Log.Information("Cleaning failed GitHub release");
-            GitTasks.Git($"push --delete origin {ReleaseVersion}", logInvocation: false);
+            GitTasks.Git($"push --delete origin refs/tags/{ReleaseVersion}", logInvocation: false);
         });
 }
