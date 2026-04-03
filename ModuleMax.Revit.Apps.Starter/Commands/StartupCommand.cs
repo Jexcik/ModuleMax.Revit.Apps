@@ -10,6 +10,6 @@ public class StartupCommand : ExternalCommand
 {
     public override void Execute()
     {
-        TaskDialog.Show("Revit","HelloWorld!");
+        TaskDialog.Show("Revit","Модуль Макс!");
     }
 }
